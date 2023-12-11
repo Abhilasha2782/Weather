@@ -1,0 +1,130 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search city" name="city" [(ngModel)]="cityName">
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<div class="Generate">
+  <div id="generateInfo">
+    <button (click)="generatePDF()">Generate PDF</button>
+  </div>
+</div>
+
+
+<div class="container" *ngIf="weatherData">
+  <div class="upper-data">
+    <img src="../assets/Day.png" *ngIf="weatherData.main.temp > 297">
+    <img src="../assets/night.png" *ngIf="weatherData.main.temp <= 297">
+
+    <div class="weather-data">
+      <div class="location">{{weatherData.name}}</div>
+      <div class="temperature">{{ weatherData.main.temp | number: '1.0-0' }}°F</div>
+
+    </div>
+  </div>
+  <div class="lower-data">
+<div class="more-info-label">
+  More Information
+</div>
+   
+<div class="more-info-container">
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/min.png">
+      <span>min</span>
+    </div>
+    <div class="info-block-value">
+      {{weatherData.main.temp_min | number: '1.0-0'}}°F
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/max.png">
+      <span>max</span>
+    </div>
+    <div class="info-block-value">
+      {{weatherData.main.temp_max | number: '1.0-0'}}°F
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/humidity.png">
+      <span>humidity</span>
+    </div>
+    <div class="info-block-value">
+      {{weatherData.main.humidity}}%
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/wind.png">
+      <span>wind</span>
+    </div>
+    <div class="info-block-value">
+      {{weatherData.wind.speed}} mi/h
+    </div>
+  </div>
+</div>
+  </div>
+ 
+</div>
+
+
+<!-- <div class="container">
+  <div class="upper-data">
+    <img src="../assets/Day.png" *ngIf="14 > 15">
+    <img src="../assets/night.png" *ngIf="14 <= 15">
+
+    <div class="weather-data">
+      <div class="location">Bengaluru</div>
+      <div class="temperature">{{ 14.40 | number: '1.0-0' }}°C</div>
+
+    </div>
+  </div>
+  <div class="lower-data">
+<div class="more-info-label">
+  More Information
+</div>
+<div class="more-info-container">
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/min.png">
+      <span>min</span>
+    </div>
+    <div class="info-block-value">
+      10°C
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/max.png">
+      <span>max</span>
+    </div>
+    <div class="info-block-value">
+      20°C
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/humidity.png">
+      <span>humidity</span>
+    </div>
+    <div class="info-block-value">
+      77%
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">
+      <img src="../assets/wind.png">
+      <span>wind</span>
+    </div>
+    <div class="info-block-value">
+      11 km/h
+    </div>
+  </div>
+</div>
+  </div>
+
+</div> -->
+<router-outlet></router-outlet>
